@@ -36,7 +36,11 @@ for (var i = 0; i < ownedResources.length; i++)
 		needed = totalsNeeded[name].needed;
 		if (totalsNeeded[name].required > 0)
 		{
-			requiredResources[name] = totalsNeeded[name].required;
+			requiredResources[name] = {
+				needed: totalsNeeded[name].needed,
+				owned: totalsNeeded[name].owned,
+				required: totalsNeeded[name].required
+			};
 		}
 	}
 
