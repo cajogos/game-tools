@@ -1,3 +1,7 @@
-body {
-	background: #EEE;
+.resource-col {
+	font-weight: bold;
+}
+
+.num-col {
+	text-align: right;
 }

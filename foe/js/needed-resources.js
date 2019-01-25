@@ -1,17 +1,13 @@
 var neededResources = [];
 
-neededResources.push({ name: "talc powder", amount: 25 });
-neededResources.push({ name: "glass", amount: 35 });
-neededResources.push({ name: "alabaster", amount: 40 });
+neededResources.push({ name: "brass", amount: 15 });
+neededResources.push({ name: "talc powder", amount: 10 });
+neededResources.push({ name: "basalt", amount: 5 });
 
-neededResources.push({ name: "silk", amount: 25 });
-neededResources.push({ name: "bricks", amount: 35 });
-neededResources.push({ name: "copper", amount: 40 });
+neededResources.push({ name: "silk", amount: 18 });
+neededResources.push({ name: "gunpowder", amount: 10 });
+neededResources.push({ name: "basalt", amount: 5 });
 
-neededResources.push({ name: "brass", amount: 25 });
-neededResources.push({ name: "ropes", amount: 35 });
-neededResources.push({ name: "honey", amount: 40 });
-
-neededResources.push({ name: "brass", amount: 25 });
-neededResources.push({ name: "glass", amount: 35 });
-neededResources.push({ name: "granite", amount: 40 });
+neededResources.push({ name: "talc powder", amount: 5 });
+neededResources.push({ name: "silk", amount: 12 });
+neededResources.push({ name: "gunpowder", amount: 6 });

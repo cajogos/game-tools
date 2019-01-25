@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FOE Tools</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+	<link rel="stylesheet" href="./css/main.css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+	<script type="text/javascript" src="./js/owned-resources.js"></script>
+	<script type="text/javascript" src="./js/needed-resources.js"></script>
+	<script type="text/javascript" src="./js/resources-calculator.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<h1 class="text-center">FoE Resources Calculator</h1>
+
+		<hr />
+
+		<div class="row">
+			
+			<div class="col-sm">
+				<h2>Required Resources</h2>
+				<table id="required-resources" class="table table-striped table-hover table-sm">
+					<thead>
+						<tr>
+							<th>Resource</th>
+							<th>Needed</th>
+							<th>Owned</th>
+							<th>Required</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+
+			<div class="col-sm">
+				<h2>Available Resources</h2>
+				<table id="available-resources" class="table table-striped table-hover table-sm">
+					<thead>
+						<tr>
+							<th>Resource</th>
+							<th>Owned</th>
+							<th>Needed</th>
+							<th>Available</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			var tableOptions = {};
+			var tableData = [];
+			var curRes = null;
+
+			// Required Resources
+			for (var name in requiredResources)
+			{
+				if (requiredResources.hasOwnProperty(name))
+				{
+					curRes = requiredResources[name];
+					tableData.push({
+						resource: name,
+						needed: curRes.needed,
+						owned: curRes.owned,
+						required: curRes.required
+					});
+				}
+			}
+			tableOptions = {
+				data: tableData,
+				order: [[3, 'desc']],
+				columns: [
+				{
+					data: 'resource',
+					className: 'resource-col'
+				},
+				{
+					data: 'needed',
+					className: 'num-col'
+				},
+				{
+					data: 'owned',
+					className: 'num-col'
+				},
+				{
+					data: 'required',
+					className: 'num-col'
+				}
+				],
+				searching: false,
+				paging: false
+			};
+			$('#required-resources').DataTable(tableOptions);
+
+			// Available Resources
+			tableData = [];
+			for (var name in available)
+			{
+				if (available.hasOwnProperty(name))
+				{
+					curRes = available[name];
+					tableData.push({
+						resource: name,
+						owned: curRes.owned,
+						needed: curRes.needed,
+						available: curRes.available
+					});
+				}
+			}
+			tableOptions = {
+				data: tableData,
+				order: [[3, 'desc']],
+				columns: [
+				{
+					data: 'resource',
+					className: 'resource-col'
+				},
+				{
+					data: 'owned',
+					className: 'num-col'
+				},
+				{
+					data: 'needed',
+					className: 'num-col'
+				},
+				{
+					data: 'available',
+					className: 'num-col'
+				}
+				],
+				searching: false,
+				paging: false
+			};
+			$('#available-resources').DataTable(tableOptions);
+		});
+	</script>
+</body>
+</html>
